@@ -1,0 +1,213 @@
+{
+  "template": "cluster_state_2-4*",
+  "order": 10,
+
+  "settings": {},
+  "aliases": {},
+
+  "mappings": {
+
+    "_default_": {
+      "properties": {
+
+        "cluster_name": { "type": "string", "index": "not_analyzed" },
+        "timestamp": { "type": "date", "format": "strict_date_optional_time||epoch_millis" },
+        "status": { "type": "string", "index": "not_analyzed" },
+
+        "indices": { "type": "nested",
+          "properties": {
+
+            "count": { "type": "long" },
+            "completion": {
+              "properties": {
+                 "size_in_bytes": { "type": "long" }
+              }
+            },
+            "fielddata": {
+              "properties": {
+                "evictions": { "type": "long" },
+                "memory_size_in_bytes": { "type": "long" }
+              }
+            },
+            "docs": {
+              "properties": {
+                "count": { "type": "long" },
+                "deleted": { "type": "long" }
+              }
+            },
+            "segments": {
+              "properties": {
+                "count": { "type": "long" },
+                "term_vectors_memory_in_bytes": { "type": "long" },
+                "version_map_memory_in_bytes": { "type": "long" },
+                "index_writer_max_memory_in_bytes": { "type": "long" },
+                "norms_memory_in_bytes": { "type": "long" },
+                "stored_fields_memory_in_bytes": { "type": "long" },
+                "doc_values_memory_in_bytes": { "type": "long" },
+                "fixed_bit_set_memory_in_bytes": { "type": "long" },
+                "terms_memory_in_bytes": { "type": "long" },
+                "memory_in_bytes": { "type": "long" },
+                "index_writer_memory_in_bytes": { "type": "long" }
+              }
+            },
+            "shards": {
+              "properties": {
+                "replication": { "type": "double" },
+                "total": { "type": "long" },
+                "primaries": { "type": "long" },
+                "index": {
+                  "properties": {
+                    "replication": {
+                      "properties": {
+                        "avg": { "type": "double" },
+                        "max": { "type": "long" },
+                        "min": { "type": "long" }
+                      }
+                    },
+                    "primaries": {
+                      "properties": {
+                        "avg": { "type": "double" },
+                        "max": { "type": "long" },
+                        "min": { "type": "long" }
+                      }
+                    },
+                    "shards": {
+                      "properties": {
+                        "avg": { "type": "double" },
+                        "max": { "type": "long" },
+                        "min": { "type": "long" }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "query_cache": {
+              "properties": {
+                "miss_count": { "type": "long" },
+                "total_count": { "type": "long" },
+                "evictions": { "type": "long" },
+                "memory_size_in_bytes": { "type": "long" },
+                "hit_count": { "type": "long" },
+                "cache_size": { "type": "long" },
+                "cache_count": { "type": "long" }
+              }
+            },
+            "percolate": {
+              "properties": {
+                "current": { "type": "long" },
+                "memory_size_in_bytes": { "type": "long" },
+                "memory_size": { "enabled": false },
+                "queries": { "type": "long" },
+                "time_in_millis": { "type": "long" },
+                "total": { "type": "long" }
+              }
+            },
+            "store": {
+              "properties": {
+                "size_in_bytes": { "type": "long" },
+                "throttle_time_in_millis": { "type": "long" }
+              }
+            }
+          }
+        },
+
+        "nodes": { "type": "nested",
+          "properties": {
+
+            "count": {
+              "properties": {
+                "data_only": { "type": "short" },
+                "master_data": { "type": "short" },
+                "total": { "type": "short" },
+                "master_only": { "type": "short" },
+                "client": { "type": "short" }
+              }
+            },
+            "fs": {
+              "properties": {
+                "free_in_bytes": { "type": "long" },
+                "total_in_bytes": { "type": "long" },
+                "available_in_bytes": { "type": "long" }
+              }
+            },
+            "versions": { "type": "string", "index": "not_analyzed" },
+            "process": {
+              "properties": {
+                "open_file_descriptors": {
+                  "properties": {
+                    "max": { "type": "long" },
+                    "avg": { "type": "double" },
+                    "min": { "type": "long" }
+                  }
+                },
+                "cpu": {
+                  "properties": {
+                    "percent": { "type": "short" }
+                  }
+                }
+              }
+            },
+            "jvm": {
+              "properties": {
+                "mem": {
+                  "properties": {
+                    "heap_used_in_bytes": { "type": "long" },
+                    "heap_max_in_bytes": { "type": "long" }
+                  }
+                },
+                "threads": { "type": "long" },
+                "max_uptime_in_millis": { "type": "long" },
+                "versions": { "type": "nested",
+                  "properties": {
+
+                    "vm_name": { "type": "string", "index": "not_analyzed" },
+                    "count": { "type": "short" },
+                    "version": { "type": "string", "index": "not_analyzed" },
+                    "vm_version": { "type": "string", "index": "not_analyzed" },
+                    "vm_vendor": { "type": "string", "index": "not_analyzed" }
+
+                  }
+                }
+              }
+            },
+            "plugins": { "type": "nested",
+              "properties": {
+
+                "name": { "type": "string", "index": "not_analyzed" },
+                "version": { "type": "string", "index": "not_analyzed" },
+                "description": { "type": "string", "index": "not_analyzed" },
+                "jmv": { "type": "boolean" },
+                "classname": { "type": "string", "index": "not_analyzed" },
+                "isolated": { "type": "boolean" },
+                "site": { "type": "boolean" }
+
+              }
+            },
+            "os": {
+              "properties": {
+                "mem": {
+                  "properties": {
+                    "total_in_bytes": { "type": "long" }
+                  }
+                },
+                "allocated_processors": { "type": "short" },
+                "names": { "type": "nested",
+                  "properties": {
+
+                    "count": { "type": "short" },
+                    "name": { "type": "string", "index": "not_analyzed" }
+
+                  }
+                },
+                "available_processors": { "type": "double" }
+              }
+            }
+
+          }
+        }
+
+      }
+    }
+  }
+}

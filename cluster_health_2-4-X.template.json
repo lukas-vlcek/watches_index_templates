@@ -1,0 +1,61 @@
+{
+  "template": "cluster_health_2-4*",
+  "order": 10,
+
+  "settings": {},
+  "aliases": {},
+
+  "mappings": {
+
+    "_default_": {
+      "properties": {
+
+        "active_primary_shards": { "type": "long" },
+        "active_shards": { "type": "long" },
+        "active_shards_percent_as_number": { "type": "double" },
+        "cluster_name": { "type": "string", "index": "not_analyzed" },
+        "delayed_unassigned_shards": { "type": "long" },
+        "initializing_shards": { "type": "long" },
+        "number_of_data_nodes": { "type": "long" },
+        "number_of_in_flight_fetch": { "type": "long" },
+        "number_of_nodes": { "type": "long" },
+        "number_of_pending_tasks": { "type": "long" },
+        "relocating_shards": { "type": "long" },
+        "status": { "type": "string", "index": "not_analyzed" },
+        "task_max_waiting_in_queue_millis": { "type": "long" },
+        "timed_out": { "type": "boolean" },
+        "timestamp": { "type": "date", "format": "strict_date_optional_time||epoch_millis" },
+        "unassigned_shards": { "type": "long" },
+
+        "indices": { "type": "nested",
+          "properties": {
+
+            "active_primary_shards": { "type": "long" },
+            "active_shards": { "type": "long" },
+            "index": { "type": "string" },
+            "initializing_shards": { "type": "long" },
+            "number_of_replicas": { "type": "long" },
+            "number_of_shards": { "type": "long" },
+            "relocating_shards": { "type": "long" },
+            "status": { "type": "string", "index": "not_analyzed" },
+            "unassigned_shards": { "type": "long" },
+
+            "shards": { "type": "nested",
+              "properties": {
+
+                "active_shards": { "type": "long" },
+                "initializing_shards": { "type": "long" },
+                "primary_active": { "type": "boolean" },
+                "relocating_shards": { "type": "long" },
+                "shard": { "type": "string", "index": "not_analyzed" },
+                "status": { "type": "string", "index": "not_analyzed" },
+                "unassigned_shards": { "type": "long" }
+
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
