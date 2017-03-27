@@ -1,5 +1,5 @@
 {
-  "template": "watches_cluster_defaults_2-4*",
+  "template": "watches_*_2-4*",
   "order": 5,
   "settings": {},
   "aliases": {},
