@@ -1,0 +1,31 @@
+{
+  "template": "watches_cluster_defaults_2-4*",
+  "order": 5,
+  "settings": {},
+  "aliases": {},
+  "mappings": {
+    "_default_": {
+      "dynamic_templates": [
+
+        {
+          "string_fields": {
+            "mapping": {
+              "fields": {
+                "raw": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                }
+              },
+              "index": "analyzed",
+              "omit_norms": true,
+              "type": "string"
+            },
+            "match": "*",
+            "match_mapping_type": "string"
+          }
+        }
+
+      ]
+    }
+  }
+}
