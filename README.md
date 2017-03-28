@@ -2,7 +2,7 @@ Index templates used to store Elasticsearch stats data.
 
 Notice, index templates assume incoming JSON data is formatted as a nested data. If you use watches to poll data
 from Elasticsearch then you can use `--transform` option to handle the data transformation accordingly.
-If you use provided [`scripts`](lukas-vlcek/watches_mapping/tree/master/scripts) then they are all setup to handle
+If you use provided [`scripts`](scripts) then they are all setup to handle
 this for you. 
 
 ## Requires
