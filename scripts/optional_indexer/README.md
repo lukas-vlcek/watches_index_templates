@@ -14,3 +14,12 @@ curl -O download.elasticsearch.org/stream2es/stream2es; chmod +x stream2es
 
 Once done, go back up to [`scripts`](scripts) folder and run `index_wiki.sh`
 script to start indexing wiki data to specified index.
+
+For example to start indexing wiki data to index called `english_wiki`:
+ 
+````
+./index_wiki.sh english_wiki
+
+# To auto terminate the process after 60 seconds you can do
+./index_wiki.sh english_wiki 60 
+````
