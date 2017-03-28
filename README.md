@@ -27,14 +27,22 @@ cd scripts
 # Push index templates
 ./push_mappings.sh
 
+# Start fluentd process to tail log files (populated by watches, see below)
+# and push the data back to the same Elasticsearch.
+./start_fluentd.sh
+
 # Start watches processes to poll ES stats
 # and store them to log files.
 # By default watches processes will run 60 seconds and then terminate.
 # You can change this duration by passing a number as a first parameter to this script.
 # Example: ./start_watches.sh 10
+# You can also terminate this script manually at any time.
 ./start_watches.sh
-
-# Start fluentd process to tail these log files
-# and push them back to the same Elasticsearch.
-./start_fluentd.sh
 ````
+
+## Optional
+
+To get more _interesting_ stats data from Elasticsearch you can consider running another parallel indexing task,
+  for example you can use [stream2es](https://github.com/elastic/stream2es.git) tool to index Wikipedia dump.
+  
+See [optional indexer](scripts/optional_indexer/README.md) doc for more details.

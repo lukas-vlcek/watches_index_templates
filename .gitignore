@@ -1,2 +1,5 @@
 .idea/
 *.iml
+
+# Wiki dumps if optional indexer is used
+scripts/optional_indexer/*.bz2
