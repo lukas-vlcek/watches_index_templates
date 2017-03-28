@@ -42,7 +42,7 @@ cd scripts
 
 ## Optional
 
-To get more _interesting_ stats data from Elasticsearch you can consider running another parallel indexing task,
+To get more _realistic_ stats data from Elasticsearch you can consider running parallel intensive indexing task,
   for example you can use [stream2es](https://github.com/elastic/stream2es.git) tool to index Wikipedia dump.
   
-See [optional indexer](scripts/optional_indexer/README.md) doc for more details.
+See [optional indexer documentation](scripts/optional_indexer/README.md) for more details.
