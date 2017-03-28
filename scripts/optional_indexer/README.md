@@ -6,7 +6,7 @@ into this folder:
 ````
 curl https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2
 ````    
-- Download the latest release of [stream2es tool](https://github.com/elastic/stream2es#install) and make it executable:
+- Download the latest release of [stream2es](https://github.com/elastic/stream2es#install) tool and make it executable:
 
 ````
 curl -O download.elasticsearch.org/stream2es/stream2es; chmod +x stream2es

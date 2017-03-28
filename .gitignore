@@ -1,5 +1,6 @@
 .idea/
 *.iml
 
-# Wiki dumps if optional indexer is used
+# Wiki dumps and stream2es tool if optional indexer is used
 scripts/optional_indexer/*.bz2
+stream2es
