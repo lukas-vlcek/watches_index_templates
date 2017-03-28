@@ -1,21 +1,24 @@
 Index templates used to store Elasticsearch stats data.
 
-Notice, the index templates assume the incoming JSON data is formatted as a nested data. If you use watches to poll data
-from Elasticsearch then you can use `--transform` option (see [#watches-cli/pull/29](https://github.com/ViaQ/watches-cli/pull/29)).
-If you use provided [`scripts`](lukas-vlcek/watches_mapping/tree/master/scripts) then they will handle this for you, see below. 
+Notice, index templates assume incoming JSON data is formatted as a nested data. If you use watches to poll data
+from Elasticsearch then you can use `--transform` option to handle the data transformation accordingly.
+If you use provided [`scripts`](lukas-vlcek/watches_mapping/tree/master/scripts) then they are all setup to handle
+this for you. 
 
-Requires:
+## Requires
 
 - the latest **watches** cli tool, see watches docs for [installation instructions](https://github.com/ViaQ/watches-cli#install)
-- installed Elasticsearch 2.4.x
+- installed **Elasticsearch 2.4.x**
 - configure `ES_BIN` env variable to point to `bin/elasticsearch` script 
 
-How to use it:
+## How to
 
 In this demo we will use local Elasticsearch node to poll stats from and store this data back to it again.
-This creates "feedback-loop" which is not recommended for production use, but is ok for demo. 
+This creates "feedback-loop" which is not recommended for production use but is ok for demo. 
 
 ````bash
+git clone https://github.com/lukas-vlcek/watches_mapping.git
+cd watches_mapping
 cd scripts
 
 # Start local Elasticsearch node
