@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ./configure_env.sh
+source _configure_env.sh
 
 #curl -X DELETE $ES_URL/*
 
