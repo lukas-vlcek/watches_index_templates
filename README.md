@@ -2,23 +2,23 @@
 
 A **set of Elasticsearch index templates** designed to store and enable querying of Elasticsearch operational statistics.
 The templates are specifically designed to work well in combination with [watches](github.com/ViaQ/watches-cli) CLI
-tool.
+tool (see below).
 
-Index templates assume JSON data is formatted as
-[nested data](https://www.elastic.co/guide/en/elasticsearch/reference/master/nested.html)
-(JSON data provided by Elasticsearch stats REST endpoints may need transformation to be nested).
+Provided index templates assume JSON data is formatted as
+[nested data](https://www.elastic.co/guide/en/elasticsearch/reference/master/nested.html).
+JSON data provided by Elasticsearch stats REST endpoints may need transformation to be nested.
 If you use [watches](github.com/ViaQ/watches-cli) to poll data from Elasticsearch then you can use `--transform` option
 to handle the data transformation accordingly.
 
-The following are provided [`scripts`](scripts) and [`fluentd`](fluentd) configuration demonstrating how to setup
+There are provided useful [`scripts`](scripts) and [`fluentd`](fluentd) configuration demonstrating how to setup
 and use index templates correctly.
 
 # How To
 
-In the following demo we will use local Elasticsearch to poll operational stats from and store this data back to the
-same instance. More specifically, we will be polling ES REST APIs by watches to log files. These log files are then
-tailed by fluentd and pushed back to the same Elasticsearch cluster. This creates infamous "feedback-loop" and is not
-recommended setup for production setup but is ok for demo. For production it is recommended to point the fluentd to
+In the following demo we will setup Elasticsearch cluster to poll operational stats from and store this data back to the
+same cluster. More specifically, we will be polling ES REST APIs by watches to log files. These log files are then
+tailed by fluentd and pushed back to the same Elasticsearch cluster. This creates infamous _feedback-loop_ and is not
+recommended setup for production setup but is ok for the demo. For production it is recommended to point the fluentd to
 different Elasticsearch cluster.
 
 ````
@@ -43,40 +43,39 @@ different Elasticsearch cluster.
 - the latest **`watches`** cli tool, see watches docs for [installation instructions](https://github.com/ViaQ/watches-cli#install)
 - installed **Elasticsearch 2.4.4**, either [download](https://www.elastic.co/downloads/past-releases/elasticsearch-2-4-4) it manually or install using [package](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/setup-repositories.html) manager 
 - installed **`fluentd`** and **`fluent-plugin-elasticsearch`**, see [fluentd docs](http://docs.fluentd.org/v0.12/articles/recipe-json-to-elasticsearch) for more details
-- (optional) configure `ES_BIN` env variable to point to starting `bin/elasticsearch` script 
+- (optional) configure `ES_BIN` env variable to point to `bin/elasticsearch` startup script 
 
 ## Setup
 
-After Elasticsearch, fluentd and watches is installed follow below instructions:
+After Elasticsearch, fluentd and watches is installed you can follow instructions:
 
 ````bash
 # ----------------------------------
 # Clone git repo and navigate to 'scripts' folder
 # ----------------------------------
-$ git clone https://github.com/lukas-vlcek/watches_index_templates.git
-$ cd watches_index_templates/scripts
+git clone https://github.com/lukas-vlcek/watches_index_templates.git
+cd watches_index_templates/scripts
 
 # ----------------------------------
 # Start and initialize Elasticsearch
 # ----------------------------------
 # Make sure ${ES_BIN} points to valid Elasticsearch startup script.
-# There is no need to setup ${ES_BIN} if 'elasticsearch' command works OOB.
-$ ${ES_BIN} --version
-Version: 2.4.4, Build: fcbb46d/2017-01-03T11:33:16Z, JVM: 1.8.0_65
+# There is no need to setup ${ES_BIN} if 'elasticsearch' CLI command works OOB.
+${ES_BIN} --version
+$ Version: 2.4.4, Build: fcbb46d/2017-01-03T11:33:16Z, JVM: 1.8.0_65
 
 # Start local Elasticsearch node
-$ ./start_elasticsearch.sh
+./start_elasticsearch.sh
 
 # Push index templates
-$ ./push_templates.sh
+./push_templates.sh
 
 # ----------------------------------
 # Start fluentd
 # ----------------------------------
-
-# Start fluentd process to tail log files (these are populated by watches, see below)
-# and push the data back to the same Elasticsearch.
-$ ./start_fluentd.sh
+# This process will tail log files (these are populated by watches, see below)
+# and push the data back to Elasticsearch cluster.
+./start_fluentd.sh
 
 # ----------------------------------
 # Start watches processes
@@ -88,7 +87,7 @@ $ ./start_fluentd.sh
 # Example: ./start_watches.sh 10
 # This will terminate all processes after 10 seconds.
 # You can also terminate this script manually at any time.
-$ ./start_watches.sh
+./start_watches.sh
 ````
 
 ## Optional

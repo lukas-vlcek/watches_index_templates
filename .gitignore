@@ -1,6 +1,10 @@
 .idea/
 *.iml
 
+# Created by start_fluentd.sh
+scripts/fluentd.log
+scripts/fluentd.pid
+
 # Wiki dumps and stream2es tool if optional indexer is used
 scripts/optional_indexer/*.bz2
 stream2es
