@@ -13,12 +13,12 @@ to handle the data transformation accordingly.
 There are provided useful [`scripts`](scripts) and [`fluentd`](fluentd) configuration demonstrating how to setup
 and use index templates correctly.
 
-# How To
+# Tutorial
 
-In the following demo we will setup Elasticsearch cluster to poll operational stats from and store this data back to the
+In this tutorial we will setup Elasticsearch cluster to poll operational stats from and store this data back to the
 same cluster. More specifically, we will be polling ES REST APIs by watches to log files. These log files are then
 tailed by fluentd and pushed back to the same Elasticsearch cluster. This creates infamous _feedback-loop_ and is not
-recommended setup for production setup but is ok for the demo. For production it is recommended to point the fluentd to
+recommended setup for production but is ok for the demo. For production it is recommended to point the fluentd to
 different Elasticsearch cluster.
 
 ````
