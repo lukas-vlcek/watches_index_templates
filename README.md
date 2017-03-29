@@ -26,10 +26,10 @@ different Elasticsearch cluster.
               +-----|  watches  |-----+
               |     +-----------+     |
               |                       |
-    +-------------------+             |
-    |                   |             V
-    |   Elasticsearch   |      +-------------+
-    |                   |      |  Log files  |
+    +-------------------+             V
+    |                   |        +-------------+
+    |   Elasticsearch   |      +-------------+ |
+    |                   |      |  Log files  |-+
     | (index templates) |      +-------------+
     +-------------------+             |
               A                       |
@@ -80,8 +80,6 @@ To get more _realistic_ stats data from Elasticsearch you can consider running p
 See [optional indexer documentation](scripts/optional_indexer/README.md) for more details.
 
 ## License
-
-[ASL v2](https://www.apache.org/licenses/LICENSE-2.0)
 
 ````
 Copyright 2017 Lukáš Vlček
