@@ -48,6 +48,7 @@ if [ ${EXIT_CODE} == 0 ]; then
   echo "Elasticsearch was started"
   echo "Waiting for HTTP port open"
   wait_for_es;
+  echo ""
   echo "Waiting for expected cluster status"
   wait_for_status;
 else

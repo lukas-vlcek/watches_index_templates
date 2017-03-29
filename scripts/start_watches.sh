@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-# Not needed, notice that we already accept TTL script parameter so using config script would clash with that.
-#source _configure_env.sh
+source _configure_env.sh
 
 ppids=""
 allpids=""
@@ -16,7 +15,7 @@ trap kill_pids SIGHUP SIGQUIT SIGINT SIGTERM
 
 function start_script {
   echo starting $1
-  nohup ./$1 $TTL 2> /dev/null &
+  nohup ./$1 $TTL > ${PATH_WATCHES_LOGS}/watches-$1.log 2> /dev/null &
   sleep 0.2
   childs=`pgrep -P $!`
   ppids="$ppids $!"
