@@ -46,30 +46,48 @@ different Elasticsearch cluster.
 
 ## Setup
 
-After Elasticseach and watches is installed 
+After Elasticsearch and watches is installed clone this repository and follow below instructions:
 
 ````bash
-git clone https://github.com/lukas-vlcek/watches_mapping.git
-cd watches_mapping
-cd scripts
+# ----------------------------------
+# Clone git repo and navigate to 'scripts' folder
+# ----------------------------------
+$ git clone https://github.com/lukas-vlcek/watches_index_templates.git
+$ cd watches_index_templates
+$ cd scripts
+
+# ----------------------------------
+# Start and initialize Elasticsearch
+# ----------------------------------
+# Make sure ${ES_BIN} points to valid Elasticsearch startup script
+$ ${ES_BIN} --version
+Version: 2.4.4, Build: fcbb46d/2017-01-03T11:33:16Z, JVM: 1.8.0_65
 
 # Start local Elasticsearch node
-./start_elasticsearch.sh
+$ ./start_elasticsearch.sh
 
 # Push index templates
-./push_mappings.sh
+$ ./push_templates.sh
 
-# Start fluentd process to tail log files (populated by watches, see below)
+# ----------------------------------
+# Start fluentd
+# ----------------------------------
+
+# Start fluentd process to tail log files (these are populated by watches, see below)
 # and push the data back to the same Elasticsearch.
-./start_fluentd.sh
+$ ./start_fluentd.sh
 
-# Start watches processes to poll ES stats
-# and store them to log files.
+# ----------------------------------
+# Start watches processes
+# ----------------------------------
+# Watches will start polling ES stats and store the data to log files.
 # By default watches processes will run 60 seconds and then terminate.
-# You can change this duration by passing a number as a first parameter to this script.
+# You can change this duration by passing a number as the first parameter to this script.
+#
 # Example: ./start_watches.sh 10
+# This will terminate all processes after 10 seconds.
 # You can also terminate this script manually at any time.
-./start_watches.sh
+$ ./start_watches.sh
 ````
 
 ## Optional
@@ -78,6 +96,11 @@ To get more _realistic_ stats data from Elasticsearch you can consider running p
   for example you can use [stream2es](https://github.com/elastic/stream2es.git) tool to index Wikipedia dump.
   
 See [optional indexer documentation](scripts/optional_indexer/README.md) for more details.
+
+## Query stored data
+ 
+Indexed data can be queried to get more insight into Elasticsearch cluster operational statistics.
+Stay tuned for more information.
 
 ## License
 
