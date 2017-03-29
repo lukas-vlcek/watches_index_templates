@@ -40,26 +40,27 @@ different Elasticsearch cluster.
 
 ## Requirements
 
-- the latest **watches** cli tool, see watches docs for [installation instructions](https://github.com/ViaQ/watches-cli#install)
-- installed **Elasticsearch 2.4.x**
-- \[optional\] configure `ES_BIN` env variable to point to starting `bin/elasticsearch` script 
+- the latest **`watches`** cli tool, see watches docs for [installation instructions](https://github.com/ViaQ/watches-cli#install)
+- installed **Elasticsearch 2.4.4**, either [download](https://www.elastic.co/downloads/past-releases/elasticsearch-2-4-4) it manually or install using [package](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/setup-repositories.html) manager 
+- installed **`fluentd`** and **`fluent-plugin-elasticsearch`**, see [fluentd docs](http://docs.fluentd.org/v0.12/articles/recipe-json-to-elasticsearch) for more details
+- (optional) configure `ES_BIN` env variable to point to starting `bin/elasticsearch` script 
 
 ## Setup
 
-After Elasticsearch and watches is installed clone this repository and follow below instructions:
+After Elasticsearch, fluentd and watches is installed follow below instructions:
 
 ````bash
 # ----------------------------------
 # Clone git repo and navigate to 'scripts' folder
 # ----------------------------------
 $ git clone https://github.com/lukas-vlcek/watches_index_templates.git
-$ cd watches_index_templates
-$ cd scripts
+$ cd watches_index_templates/scripts
 
 # ----------------------------------
 # Start and initialize Elasticsearch
 # ----------------------------------
-# Make sure ${ES_BIN} points to valid Elasticsearch startup script
+# Make sure ${ES_BIN} points to valid Elasticsearch startup script.
+# There is no need to setup ${ES_BIN} if 'elasticsearch' command works OOB.
 $ ${ES_BIN} --version
 Version: 2.4.4, Build: fcbb46d/2017-01-03T11:33:16Z, JVM: 1.8.0_65
 
