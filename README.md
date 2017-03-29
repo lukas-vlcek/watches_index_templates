@@ -1,14 +1,14 @@
 # Watches Index Templates
 
 A **set of Elasticsearch index templates** designed to store and enable querying of Elasticsearch operational statistics.
-The templates are specifically designed to work well in combination with [watches](github.com/ViaQ/watches-cli) CLI
-tool (see below).
+The templates are specifically designed to work well in combination with [watches](https://github.com/ViaQ/watches-cli)
+CLI tool (see below).
 
 Provided index templates assume JSON data is formatted as
 [nested data](https://www.elastic.co/guide/en/elasticsearch/reference/master/nested.html).
 JSON data provided by Elasticsearch stats REST endpoints may need transformation to be nested.
-If you use [watches](github.com/ViaQ/watches-cli) to poll data from Elasticsearch then you can use `--transform` option
-to handle the data transformation accordingly.
+If you use [watches](https://github.com/ViaQ/watches-cli) to poll data from Elasticsearch then you can use
+`--transform` option to handle the data transformation accordingly.
 
 There are provided useful [`scripts`](scripts) and [`fluentd`](fluentd) configuration demonstrating how to setup
 and use index templates correctly.

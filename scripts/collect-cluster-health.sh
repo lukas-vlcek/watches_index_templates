@@ -9,6 +9,7 @@ echo "Polling cluster_health to ${PATH_WATCHES_CLUSTER_HEALTH_LOGS}"
 watches cluster_health \
   -d $TTL -i 3 \
   -sblt \
+  --level=indices \
   --transform=nested \
   --url=${ES_URL} \
 > ${PATH_WATCHES_CLUSTER_HEALTH_LOGS}
