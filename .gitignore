@@ -2,6 +2,7 @@
 *.iml
 
 # Created by start_fluentd.sh
+logs/
 scripts/fluentd.log
 scripts/fluentd.pid
 
