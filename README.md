@@ -90,6 +90,11 @@ $ Version: 2.4.4, Build: fcbb46d/2017-01-03T11:33:16Z, JVM: 1.8.0_65
 ./start_watches.sh
 ````
 
+Scripts `start_elasticsearch.sh`, `push_templates.sh` and `start_fluentd.sh` share common configuration file
+[`_configure_env.sh`](scripts/_configure_env.sh)
+ which can be adjusted or included env variables can be setup to override the default values. These scripts also
+ accept `-v` parameter to force debug output.
+
 ## Optional
 
 To get more _realistic_ stats data from Elasticsearch you can consider running parallel intensive indexing task,

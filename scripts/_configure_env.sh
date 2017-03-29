@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -x
+if [[ $1 == "-v" ]]; then
+  set -x
+fi
 
 WORK_DIR=${WORK_DIR:-.}
 INDEX_TEMPLATES_DIR=${INDEX_TEMPLATES_DIR:-$WORK_DIR/..}

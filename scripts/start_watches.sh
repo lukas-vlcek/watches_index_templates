@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Not needed, notice that we already accept TTL script parameter so using config script would clash with that.
 #source _configure_env.sh
 
 ppids=""
