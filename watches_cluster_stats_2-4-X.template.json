@@ -1,5 +1,5 @@
 {
-  "template": "watches_cluster_state_2-4*",
+  "template": "watches_cluster_stats_2-4*",
   "order": 10,
 
   "settings": {},
