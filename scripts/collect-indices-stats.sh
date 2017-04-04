@@ -12,4 +12,4 @@ watches indices_stats \
   --level=shards \
   --transform=nested \
   --url=${ES_URL} \
-> ${PATH_WATCHES_NODES_STATS_LOGS}
+> ${PATH_WATCHES_INDICES_STATS_LOGS}

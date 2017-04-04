@@ -40,7 +40,7 @@ different Elasticsearch cluster.
 
 ## Requirements
 
-- the latest **`watches`** cli tool, see watches docs for [installation instructions](https://github.com/ViaQ/watches-cli#install)
+- the latest **`watches`** cli tool (`1.0.2-dev` or higher), see watches docs for [installation instructions](https://github.com/ViaQ/watches-cli#install)
 - installed **Elasticsearch 2.4.4**, either [download](https://www.elastic.co/downloads/past-releases/elasticsearch-2-4-4) it manually or install using [package](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/setup-repositories.html) manager 
 - installed **`fluentd`** and **`fluent-plugin-elasticsearch`**, see [fluentd docs](http://docs.fluentd.org/v0.12/articles/recipe-json-to-elasticsearch) for more details
 - (optional) configure `ES_BIN` env variable to point to `bin/elasticsearch` startup script 
