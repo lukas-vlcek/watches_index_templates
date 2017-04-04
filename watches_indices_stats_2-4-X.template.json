@@ -344,7 +344,7 @@
         "indices": { "type": "nested",
           "properties": {
 
-            "index": { "type": "string" },
+            "index": { "type": "string", "index": "not_analyzed" },
             "total": {
               "properties": {
                 "completion": {

@@ -10,16 +10,16 @@
     "_default_": {
       "properties": {
 
-        "cluster_name": { "type": "string" },
+        "cluster_name": { "type": "string", "index": "not_analyzed" },
         "timestamp": { "type": "date", "format": "strict_date_optional_time||epoch_millis" },
 
         "nodes": { "type": "nested",
           "properties": {
 
-            "node": { "type": "string" },
-            "name": { "type": "string" },
+            "node": { "type": "string", "index": "not_analyzed" },
+            "name": { "type": "string", "index": "not_analyzed" },
             "transport_address": { "type": "string" },
-            "timestamp": { "type": "date" },
+            "timestamp": { "type": "date", "format": "strict_date_optional_time||epoch_millis" },
             "host": { "type": "string" },
             "ip": { "type": "string" },
 

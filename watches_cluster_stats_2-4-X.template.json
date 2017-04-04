@@ -10,9 +10,9 @@
     "_default_": {
       "properties": {
 
-        "cluster_name": { "type": "string" },
+        "cluster_name": { "type": "string", "index": "not_analyzed" },
         "timestamp": { "type": "date", "format": "strict_date_optional_time||epoch_millis" },
-        "status": { "type": "string" },
+        "status": { "type": "string", "index": "not_analyzed" },
 
         "indices": { "type": "nested",
           "properties": {
@@ -131,7 +131,7 @@
                 "available_in_bytes": { "type": "long" }
               }
             },
-            "versions": { "type": "string" },
+            "versions": { "type": "string", "index": "not_analyzed" },
             "process": {
               "properties": {
                 "open_file_descriptors": {
@@ -161,11 +161,11 @@
                 "versions": { "type": "nested",
                   "properties": {
 
-                    "vm_name": { "type": "string" },
+                    "vm_name": { "type": "string", "index": "not_analyzed" },
                     "count": { "type": "short" },
-                    "version": { "type": "string" },
-                    "vm_version": { "type": "string" },
-                    "vm_vendor": { "type": "string" }
+                    "version": { "type": "string", "index": "not_analyzed" },
+                    "vm_version": { "type": "string", "index": "not_analyzed" },
+                    "vm_vendor": { "type": "string", "index": "not_analyzed" }
 
                   }
                 }
@@ -174,11 +174,11 @@
             "plugins": { "type": "nested",
               "properties": {
 
-                "name": { "type": "string" },
-                "version": { "type": "string" },
-                "description": { "type": "string" },
+                "name": { "type": "string", "index": "not_analyzed" },
+                "version": { "type": "string", "index": "not_analyzed" },
+                "description": { "type": "string", "index": "not_analyzed" },
                 "jmv": { "type": "boolean" },
-                "classname": { "type": "string" },
+                "classname": { "type": "string", "index": "not_analyzed" },
                 "isolated": { "type": "boolean" },
                 "site": { "type": "boolean" }
 
@@ -196,7 +196,7 @@
                   "properties": {
 
                     "count": { "type": "short" },
-                    "name": { "type": "string" }
+                    "name": { "type": "string", "index": "not_analyzed" }
 
                   }
                 },
