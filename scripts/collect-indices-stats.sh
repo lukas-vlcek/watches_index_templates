@@ -11,5 +11,5 @@ watches indices_stats \
   -sblt \
   --level=shards \
   --transform=nested \
-  --url=${ES_URL} \
+  --url=${ES_SOURCE_URL} \
 > ${PATH_WATCHES_INDICES_STATS_LOGS}

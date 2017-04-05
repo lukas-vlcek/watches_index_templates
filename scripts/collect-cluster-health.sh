@@ -11,5 +11,5 @@ watches cluster_health \
   -sblt \
   --level=indices \
   --transform=nested \
-  --url=${ES_URL} \
+  --url=${ES_SOURCE_URL} \
 > ${PATH_WATCHES_CLUSTER_HEALTH_LOGS}

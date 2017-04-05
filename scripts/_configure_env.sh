@@ -7,6 +7,7 @@ fi
 WORK_DIR=${WORK_DIR:-.}
 INDEX_TEMPLATES_DIR=${INDEX_TEMPLATES_DIR:-$WORK_DIR/..}
 ES_URL=${ES_URL:-http://localhost:9200}
+ES_SOURCE_URL=${ES_SOURCE_URL:-$ES_URL}
 
 ES_BIN=${ES_BIN:-elasticsearch}
 
