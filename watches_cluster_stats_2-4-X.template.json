@@ -14,7 +14,7 @@
         "timestamp": { "type": "date", "format": "strict_date_optional_time||epoch_millis" },
         "status": { "type": "string", "index": "not_analyzed" },
 
-        "indices": { "type": "nested",
+        "indices": {
           "properties": {
 
             "count": { "type": "long" },
@@ -112,7 +112,7 @@
           }
         },
 
-        "nodes": { "type": "nested",
+        "nodes": {
           "properties": {
 
             "count": {
