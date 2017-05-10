@@ -741,9 +741,9 @@
                 },
                 "routing": {
                   "properties": {
-                    "node": { "type": "string" },
-                    "state": { "type": "string" },
-                    "relocating_node": { "type": "string" },
+                    "node": { "type": "string", "index": "not_analyzed" },
+                    "state": { "type": "string", "index": "not_analyzed" },
+                    "relocating_node": { "type": "string", "index": "not_analyzed" },
                     "primary": { "type": "boolean" }
                   }
                 },
@@ -845,19 +845,19 @@
                 "shard_path": {
                   "properties": {
                     "is_custom_data_path": { "type": "boolean" },
-                    "data_path": { "type": "string" },
-                    "state_path": { "type": "string" }
+                    "data_path": { "type": "string", "index": "not_analyzed" },
+                    "state_path": { "type": "string", "index": "not_analyzed" }
                   }
                 },
                 "commit": {
                   "properties": {
                     "generation": { "type": "long" },
-                    "id": { "type": "string" },
+                    "id": { "type": "string", "index": "not_analyzed" },
                     "num_docs": { "type": "long" },
                     "user_data": {
                       "properties": {
-                        "translog_uuid": { "type": "string" },
-                        "sync_id": { "type": "string" },
+                        "translog_uuid": { "type": "string", "index": "not_analyzed" },
+                        "sync_id": { "type": "string", "index": "not_analyzed" },
                         "translog_generation": { "type": "long" }
                       }
                     }

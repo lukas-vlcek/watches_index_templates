@@ -20,8 +20,8 @@
             "name": { "type": "string", "index": "not_analyzed" },
             "transport_address": { "type": "string" },
             "timestamp": { "type": "date", "format": "strict_date_optional_time||epoch_millis" },
-            "host": { "type": "string" },
-            "ip": { "type": "string" },
+            "host": { "type": "string", "index": "not_analyzed" },
+            "ip": { "type": "string", "index": "not_analyzed" },
 
             "thread_pool": {
               "properties": {
@@ -283,9 +283,9 @@
                   "properties": {
                     "total_in_bytes": { "type": "long" },
                     "free_in_bytes": { "type": "long" },
-                    "mount": { "type": "string" },
-                    "path": { "type": "string" },
-                    "type": { "type": "string" },
+                    "mount": { "type": "string", "index": "not_analyzed" },
+                    "path": { "type": "string", "index": "not_analyzed" },
+                    "type": { "type": "string", "index": "not_analyzed" },
                     "available_in_bytes": { "type": "long" }
                   }
                 }
