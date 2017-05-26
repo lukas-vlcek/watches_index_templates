@@ -70,9 +70,11 @@ Make sure this tutorial will work with relevant code
 $ git checkout tutorial-01
 ````
 
-Modify Elasticsearch config (`config/elasticsearch.yml`) file and add path to kibana folder:
+Modify Elasticsearch config (`config/elasticsearch.yml`) file and add path to kibana folder
+and enable inline scripting:
 
     path.repo: ["/<full_path_to_checkout_of_git_repo>/watches_index_templates/kibana"]
+    script.inline: true
 
 **Now, start Elasticsearch.**
 
