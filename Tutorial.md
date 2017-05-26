@@ -47,7 +47,7 @@ $ watches --version
 Download from:
 <https://www.elastic.co/downloads/past-releases/elasticsearch-2-4-4>
 
-Start Elasticsearch.
+**Do not start Elasticsearch yet.** We need to configure path to snapshot first (see below).
 
 ## Install Kibana 4.6.4
 
@@ -55,7 +55,7 @@ Download from:
 <https://www.elastic.co/downloads/past-releases/kibana-4-6-4>
 
 **Do not start Kibana yet.** We will be importing `.kibana` index from provided snapshot
-and it is important that the `.kibana` index is not created yet before we import it.
+and it is important that the `.kibana` index is not created before we import it.
 
 ## Apply watches index templates
 
@@ -69,6 +69,12 @@ Make sure this tutorial will work with relevant code
 ````bash
 $ git checkout tutorial-01
 ````
+
+Modify Elasticsearch config (`config/elasticsearch.yml`) file and add path to kibana folder:
+
+    path.repo: ["/<full_path_to_checkout_of_git_repo>/watches_index_templates/kibana"]
+
+**Now, start Elasticsearch.**
 
 Push index templates into Elasticsearch:
 
@@ -98,7 +104,7 @@ Watches will start collecting Elaticsearch statistics and the data will be store
 
 Now, we have some statistics collected and stored in Elasticsearch. We are (almost) ready to visualize it using Kibana.
 
-I haven't found a good any official support for exporting/importing kibana dashboards including index templates and scripted fields so we will workaround this
+I haven't found official support for exporting/importing kibana dashboards including index templates and scripted fields so we will workaround this
  by importing pre-canned `.kibana` index from provided index snapshot.
  (TODO: check how [Beats dashboards are imported](https://github.com/elastic/beats/tree/master/libbeat/dashboards))
 
