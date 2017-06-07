@@ -29,7 +29,7 @@ Install the latest [watches](https://github.com/ViaQ/watches-cli) from PyPI or f
 $ pip install watches
 ...
 $ watches --version
-1.0.2
+1.0.3
 ````
 -  or get watches from **GitHub** repo and install it manually:
 
@@ -39,7 +39,7 @@ $ cd watches-cli
 $ pip install -e .[test]
 ...
 $ watches --version
-1.0.3-dev
+1.0.4-dev
 ````
 
 ## Install Elasticsearch 2.4.4
@@ -67,7 +67,7 @@ $ cd watches_index_templates/scripts
 Make sure this tutorial will work with relevant code
 
 ````bash
-$ git checkout tutorial-01
+$ git checkout tutorial-02
 ````
 
 Modify Elasticsearch config (`config/elasticsearch.yml`) file and add path to kibana folder

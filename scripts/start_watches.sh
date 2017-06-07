@@ -22,10 +22,14 @@ function start_script {
   allpids="$allpids $! $childs"
 }
 
+echo Using watches version: `watches --version`
+
 start_script collect-cluster-health.sh
 start_script collect-cluster-stats.sh
 start_script collect-nodes-stats.sh
 start_script collect-indices-stats.sh
+start_script collect-just-nodes-stats.sh
+start_script collect-just-indices-stats.sh
 
 echo jobs started, pids:
 echo $allpids

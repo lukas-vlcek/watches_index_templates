@@ -18,7 +18,7 @@
 
             "node": { "type": "string", "index": "not_analyzed" },
             "name": { "type": "string", "index": "not_analyzed" },
-            "transport_address": { "type": "string" },
+            "transport_address": { "type": "string", "index": "not_analyzed" },
             "timestamp": { "type": "date", "format": "strict_date_optional_time||epoch_millis" },
             "host": { "type": "string", "index": "not_analyzed" },
             "ip": { "type": "string", "index": "not_analyzed" },
