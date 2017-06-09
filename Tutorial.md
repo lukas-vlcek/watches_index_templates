@@ -29,7 +29,7 @@ Install the latest [watches](https://github.com/ViaQ/watches-cli) from PyPI or f
 $ pip install watches
 ...
 $ watches --version
-1.0.2
+1.0.3
 ````
 -  or get watches from **GitHub** repo and install it manually:
 
@@ -39,7 +39,7 @@ $ cd watches-cli
 $ pip install -e .[test]
 ...
 $ watches --version
-1.0.3-dev
+1.0.4-dev
 ````
 
 ## Install Elasticsearch 2.4.4
@@ -47,15 +47,14 @@ $ watches --version
 Download from:
 <https://www.elastic.co/downloads/past-releases/elasticsearch-2-4-4>
 
-**Do not start Elasticsearch yet.** We need to configure path to snapshot first (see below).
+**Do not start Elasticsearch yet.**
 
 ## Install Kibana 4.6.4
 
 Download from:
 <https://www.elastic.co/downloads/past-releases/kibana-4-6-4>
 
-**Do not start Kibana yet.** We will be importing `.kibana` index from provided snapshot
-and it is important that the `.kibana` index is not created before we import it.
+**Do not start Kibana yet.** We will be creating `.kibana` index manually.
 
 ## Apply watches index templates
 
@@ -67,13 +66,12 @@ $ cd watches_index_templates/scripts
 Make sure this tutorial will work with relevant code
 
 ````bash
-$ git checkout tutorial-01
+$ git checkout tutorial-02
 ````
 
-Modify Elasticsearch config (`config/elasticsearch.yml`) file and add path to kibana folder
+Modify Elasticsearch config (`config/elasticsearch.yml`) file
 and enable inline scripting:
 
-    path.repo: ["/<full_path_to_checkout_of_git_repo>/watches_index_templates/kibana"]
     script.inline: true
 
 **Now, start Elasticsearch.**
@@ -106,15 +104,11 @@ Watches will start collecting Elaticsearch statistics and the data will be store
 
 Now, we have some statistics collected and stored in Elasticsearch. We are (almost) ready to visualize it using Kibana.
 
-I haven't found official support for exporting/importing kibana dashboards including index templates and scripted fields so we will workaround this
- by importing pre-canned `.kibana` index from provided index snapshot.
- (TODO: check how [Beats dashboards are imported](https://github.com/elastic/beats/tree/master/libbeat/dashboards))
-
-Assuming Kibana hasn't been started yet and the `.kibana` index does not exists in ES you
-can use the following script to import this index from provided snapshot.
+Assuming Kibana has not been started yet and the `.kibana` index does not exists in ES you
+can use the following script to setup kibana index mapping and .
 
 ````bash
-$ ./import_kibana_index.sh
+$ ./create_kibana_index.sh
 ````
 
 ## Start Kibana

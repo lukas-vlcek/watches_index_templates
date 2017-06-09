@@ -1,0 +1,587 @@
+{
+  "template": "watches_just_nodes_stats_2-4*",
+  "order": 10,
+
+  "settings": {},
+  "aliases": {},
+
+  "mappings": {
+
+    "_default_": {
+      "properties": {
+
+        "timestamp": { "type": "date", "format": "strict_date_optional_time||epoch_millis" },
+        "host": { "type": "string", "index": "not_analyzed" },
+        "ip": { "type": "string", "index": "not_analyzed" },
+        "node": { "type": "string", "index": "not_analyzed" },
+        "name": { "type": "string", "index": "not_analyzed" },
+        "transport_address": { "type": "string", "index": "not_analyzed" },
+
+        "breakers": {
+          "properties": {
+
+            "request": {
+              "properties": {
+                "limit_size": { "enabled": false },
+                "limit_size_in_bytes": { "type": "long" },
+                "estimated_size": { "enabled": false },
+                "estimated_size_in_bytes": { "type": "long" },
+                "overhead": { "type": "double" },
+                "tripped": { "type": "long" }
+              }
+            },
+            "fielddata":{
+              "properties": {
+                "limit_size": { "enabled": false },
+                "limit_size_in_bytes": { "type": "long" },
+                "estimated_size": { "enabled": false },
+                "estimated_size_in_bytes": { "type": "long" },
+                "overhead": { "type": "double" },
+                "tripped": { "type": "long" }
+              }
+            },
+            "parent": {
+              "properties": {
+                "limit_size": { "enabled": false },
+                "limit_size_in_bytes": { "type": "long" },
+                "estimated_size": { "enabled": false },
+                "estimated_size_in_bytes": { "type": "long" },
+                "overhead": { "type": "double" },
+                "tripped": { "type": "long" }
+              }
+            },
+            "in_flight_requests": {
+              "properties": {
+                "limit_size": { "enabled": false },
+                "limit_size_in_bytes": { "type": "long" },
+                "estimated_size": { "enabled": false },
+                "estimated_size_in_bytes": { "type": "long" },
+                "overhead": { "type": "double" },
+                "tripped": { "type": "long" }
+              }
+            }
+          }
+        },
+
+        "fs": {
+          "properties": {
+            "timestamp": { "type": "date" },
+            "total": {
+              "properties": {
+                "free_in_bytes": { "type": "long" },
+                "total_in_bytes": { "type": "long" },
+                "available_in_bytes": { "type": "long" }
+              }
+            },
+            "data": { "type": "nested",
+              "properties": {
+                "total_in_bytes": { "type": "long" },
+                "free_in_bytes": { "type": "long" },
+                "mount": { "type": "string", "index": "not_analyzed" },
+                "path": { "type": "string", "index": "not_analyzed" },
+                "type": { "type": "string", "index": "not_analyzed" },
+                "available_in_bytes": { "type": "long" }
+              }
+            }
+          }
+        },
+
+        "http": {
+          "properties": {
+            "total_opened": { "type": "long" },
+            "current_open": { "type": "long" }
+          }
+        },
+
+        "indices": {
+          "properties": {
+            "completion": {
+              "properties": {
+                "size_in_bytes": { "type": "long" }
+              }
+            },
+            "suggest": {
+              "properties": {
+                "current": { "type": "long" },
+                "total": { "type": "long" },
+                "time_in_millis": { "type": "long" }
+              }
+            },
+            "search": {
+              "properties": {
+                "query_total": { "type": "long" },
+                "scroll_total": { "type": "long" },
+                "fetch_time_in_millis": { "type": "long" },
+                "fetch_total": { "type": "long" },
+                "query_time_in_millis": { "type": "long" },
+                "scroll_time_in_millis": { "type": "long" },
+                "open_contexts": { "type": "long" },
+                "fetch_current": { "type": "long" },
+                "scroll_current": { "type": "long" },
+                "query_current": { "type": "long" }
+              }
+            },
+            "fielddata": {
+              "properties": {
+                "evictions": { "type": "long" },
+                "memory_size_in_bytes":  { "type": "long" }
+              }
+            },
+            "get": {
+              "properties": {
+                "missing_total": { "type": "long" },
+                "exists_total": { "type": "long" },
+                "current": { "type": "short" },
+                "time_in_millis": { "type": "long" },
+                "missing_time_in_millis": { "type": "long" },
+                "exists_time_in_millis": { "type": "long" },
+                "total": { "type": "long" }
+              }
+            },
+            "translog": {
+              "properties": {
+                "operations": { "type": "long" },
+                "size_in_bytes": { "type": "long" }
+              }
+            },
+            "docs": {
+              "properties": {
+                "count": { "type": "long" },
+                "deleted": { "type": "long" }
+              }
+            },
+            "segments": {
+              "properties": {
+                "count": { "type": "long" },
+                "term_vectors_memory_in_bytes": { "type": "long" },
+                "version_map_memory_in_bytes": { "type": "long" },
+                "index_writer_max_memory_in_bytes": { "type": "long" },
+                "norms_memory_in_bytes": { "type": "long" },
+                "stored_fields_memory_in_bytes": { "type": "long" },
+                "doc_values_memory_in_bytes": { "type": "long" },
+                "fixed_bit_set_memory_in_bytes": { "type": "long" },
+                "terms_memory_in_bytes": { "type": "long" },
+                "memory_in_bytes": { "type": "long" },
+                "index_writer_memory_in_bytes": { "type": "long" }
+              }
+            },
+            "flush": {
+              "properties": {
+                "total_time_in_millis": { "type": "long" },
+                "total": { "type": "long" }
+              }
+            },
+            "indexing": {
+              "properties": {
+                "delete_time_in_millis": { "type": "long" },
+                "noop_update_total": { "type": "long" },
+                "throttle_time_in_millis": { "type": "long" },
+                "is_throttled": { "type": "boolean" },
+                "index_total": { "type": "long" },
+                "index_current": { "type": "long" },
+                "index_failed": { "type": "long" },
+                "delete_total": { "type": "long" },
+                "index_time_in_millis": { "type": "long" },
+                "delete_current": { "type": "long" }
+              }
+            },
+            "refresh": {
+              "properties": {
+                "total_time_in_millis": { "type": "long" },
+                "total": { "type": "long" }
+              }
+            },
+            "query_cache": {
+              "properties": {
+                "miss_count": { "type": "long" },
+                "total_count": { "type": "long" },
+                "evictions": { "type": "long" },
+                "memory_size_in_bytes": { "type": "long" },
+                "hit_count": { "type": "long" },
+                "cache_size": { "type": "long" },
+                "cache_count": { "type": "long" }
+              }
+            },
+            "warmer": {
+              "properties": {
+                "current": { "type": "long" },
+                "total_time_in_millis": { "type": "long" },
+                "total": { "type": "long" }
+              }
+            },
+            "request_cache": {
+              "properties": {
+                "evictions": { "type": "long" },
+                "miss_count": { "type": "long" },
+                "hit_count": { "type": "long" },
+                "memory_size_in_bytes": { "type": "long" }
+              }
+            },
+            "percolate": {
+              "properties": {
+                "memory_size_in_bytes": { "type": "long" },
+                "current": { "type": "long" },
+                "memory_size": { "enabled": false },
+                "time_in_millis": { "type": "long" },
+                "queries": { "type": "long" },
+                "total": { "type": "long" }
+              }
+            },
+            "merges": {
+              "properties": {
+                "total_docs": { "type": "long" },
+                "total_auto_throttle_in_bytes": { "type": "long" },
+                "total_size_in_bytes": { "type": "long" },
+                "total_throttled_time_in_millis": { "type": "long" },
+                "current_size_in_bytes": { "type": "long" },
+                "current_docs": { "type": "long" },
+                "current": { "type": "long" },
+                "total_time_in_millis": { "type": "long" },
+                "total_stopped_time_in_millis": { "type": "long" },
+                "total": { "type": "long" }
+              }
+            },
+            "store": {
+              "properties": {
+                "size_in_bytes": { "type": "long" },
+                "throttle_time_in_millis": { "type": "long" }
+              }
+            },
+            "recovery": {
+              "properties": {
+                "current_as_target": { "type": "long" },
+                "throttle_time_in_millis": { "type": "long" },
+                "current_as_source": { "type": "long" }
+              }
+            }
+          }
+        },
+
+        "jvm": {
+          "properties": {
+            "mem": {
+              "properties": {
+                "non_heap_used_in_bytes": { "type": "long" },
+                "heap_max_in_bytes": { "type": "long" },
+                "heap_used_in_bytes": { "type": "long" },
+                "heap_committed_in_bytes": { "type": "long" },
+                "heap_used_percent": { "type": "short" },
+                "non_heap_committed_in_bytes": { "type": "long" },
+                "pools": {
+                  "properties": {
+                    "old": {
+                      "properties": {
+                        "max_in_bytes": { "type": "long" },
+                        "peak_max_in_bytes": { "type": "long" },
+                        "peak_used_in_bytes": { "type": "long" },
+                        "used_in_bytes": { "type": "long" }
+                      }
+                    },
+                    "young": {
+                      "properties": {
+                        "max_in_bytes": { "type": "long" },
+                        "peak_max_in_bytes": { "type": "long" },
+                        "peak_used_in_bytes": { "type": "long" },
+                        "used_in_bytes": { "type": "long" }
+                      }
+                    },
+                    "survivor": {
+                      "properties": {
+                        "max_in_bytes": { "type": "long" },
+                        "peak_max_in_bytes": { "type": "long" },
+                        "peak_used_in_bytes": { "type": "long" },
+                        "used_in_bytes": { "type": "long" }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timestamp": { "type": "date" },
+            "uptime_in_millis": { "type": "long" },
+            "classes": {
+              "properties": {
+                "current_loaded_count": { "type": "long" },
+                "total_unloaded_count": { "type": "long" },
+                "total_loaded_count": { "type": "long" }
+              }
+            },
+            "threads": {
+              "properties": {
+                "count": { "type": "long" },
+                "peak_count": { "type": "long" }
+              }
+            },
+            "gc": {
+              "properties": {
+                "collectors": {
+                  "properties": {
+                    "old": {
+                      "properties": {
+                        "collection_count": { "type": "long" },
+                        "collection_time_in_millis": { "type": "long" }
+                      }
+                    },
+                    "young": {
+                      "properties": {
+                        "collection_count": { "type": "long" },
+                        "collection_time_in_millis": { "type": "long" }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "buffer_pools": {
+              "properties": {
+                "direct": {
+                  "properties": {
+                    "count": { "type": "long" },
+                    "total_capacity_in_bytes": { "type": "long" },
+                    "used_in_bytes": { "type": "long" }
+                  }
+                },
+                "mapped": {
+                  "properties": {
+                    "count": { "type": "long" },
+                    "total_capacity_in_bytes": { "type": "long" },
+                    "used_in_bytes": { "type": "long" }
+                  }
+                }
+              }
+            }
+          }
+        },
+
+        "os": {
+          "properties": {
+            "load_average": { "type": "double" },
+            "timestamp": { "type": "date" },
+            "mem": {
+              "properties": {
+                "free_in_bytes": { "type": "long" },
+                "free_percent": { "type": "short" },
+                "used_in_bytes": { "type": "long" },
+                "total_in_bytes": { "type": "long" },
+                "used_percent": { "type": "short" }
+              }
+            },
+            "swap": {
+              "properties": {
+                "free_in_bytes": { "type": "long" },
+                "used_in_bytes": { "type": "long" },
+                "total_in_bytes": { "type": "long" }
+              }
+            },
+            "cpu_percent": { "type": "short" }
+          }
+        },
+
+        "process": {
+          "properties": {
+            "timestamp": { "type": "date" },
+            "open_file_descriptors": { "type": "long" },
+            "max_file_descriptors": { "type": "long" },
+            "mem": {
+              "properties": {
+                "total_virtual_in_bytes": { "type": "long" }
+              }
+            },
+            "cpu": {
+              "properties": {
+                "percent": { "type": "short" },
+                "total_in_millis": { "type": "long" }
+              }
+            }
+          }
+        },
+
+        "script": {
+          "properties": {
+            "compilations": { "type": "long" },
+            "cache_evictions": { "type": "long" }
+          }
+        },
+
+        "thread_pool": {
+          "properties": {
+
+            "index": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "search": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "force_merge": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "get": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "generic": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "suggest": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "refresh": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "listener": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "bulk": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "management": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "snapshot": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "percolate": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "flush": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "fetch_shard_started": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "warmer": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            },
+            "fetch_shard_store": {
+              "properties": {
+                "completed": { "type": "long" },
+                "rejected": { "type": "long" },
+                "queue": { "type": "long" },
+                "threads": { "type": "long" },
+                "largest": { "type": "long" },
+                "active": { "type": "long" }
+              }
+            }
+
+          }
+        },
+
+        "transport": {
+          "properties": {
+            "tx_count": { "type": "long" },
+            "rx_count": { "type": "long" },
+            "rx_size_in_bytes": { "type": "long" },
+            "tx_size_in_bytes": { "type": "long" },
+            "server_open": { "type": "long" }
+          }
+        }
+
+      }
+    }
+
+  }
+}
