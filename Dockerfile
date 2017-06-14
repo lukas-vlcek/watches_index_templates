@@ -42,5 +42,5 @@ ADD run.sh install.sh ${HOME}/
 RUN ${HOME}/install.sh
 
 WORKDIR ${HOME}
-USER 1000
+#USER 1000
 CMD ["sh", "run.sh"]
