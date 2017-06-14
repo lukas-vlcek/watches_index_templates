@@ -16,10 +16,14 @@ LABEL io.k8s.description="Watches TBD" \
 
 RUN rpmkeys --import file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
     yum install -y --setopt=tsflags=nodocs \
-      python3 \
+      gcc-c++ \
       ruby \
       ruby-devel \
-      libcurl-devel && \
+      libcurl-devel \
+      make \
+      bc \
+      iproute \
+      python3 && \
     yum clean all
 RUN mkdir -p ${HOME} && \
     gem install -N --conservative --minimal-deps \
