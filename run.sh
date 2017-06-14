@@ -3,3 +3,4 @@
 cd ./scripts/
 
 ./start_fluentd.sh
+./start_watches.sh
