@@ -7,7 +7,7 @@ ENV HOME=/opt/app-root/src \
   PATH=/opt/app-root/src/bin:/opt/app-root/bin:$PATH \
   RUBY_VERSION=2.0 \
   GEM_HOME=/opt/app-root/src \
-  FLUENTD_VERSION=0.12.31
+  FLUENTD_VERSION=0.12.31 \
   FLUENTD_SECURED="-secured"
 
 LABEL io.k8s.description="Watches TBD" \
