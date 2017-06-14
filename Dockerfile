@@ -33,7 +33,7 @@ RUN mkdir -p ${HOME} && \
       'elasticsearch:<5' \
       'fluent-plugin-elasticsearch:>1.9.2'
 
-ADD fluentd/ /etc/fluent/configs.d/
+ADD fluentd/ ${HOME}/fluentd
 ADD kibana/ ${HOME}/kibana
 ADD scripts/ ${HOME}/scripts
 ADD *.json ${ES_CONF}/
