@@ -33,7 +33,7 @@ RUN mkdir -p ${HOME} && \
       'elasticsearch-api:<5' \
       'elasticsearch:<5' \
       'fluent-plugin-elasticsearch:>1.9.2'
-RUN easy_install3 pip && \
+RUN easy_install pip && \
     pip install watches
 
 ADD fluentd/ /etc/fluent/configs.d/
