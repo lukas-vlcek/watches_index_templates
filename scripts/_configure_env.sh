@@ -4,11 +4,14 @@ if [[ $1 == "-v" ]]; then
   set -x
 fi
 
+ES_HOST=localhost
+ES_PORT=9200
+ES_URL=${ES_URL:-http://${ES_HOST}:${ES_PORT}
 WORK_DIR=${WORK_DIR:-.}
 INDEX_TEMPLATES_DIR=${INDEX_TEMPLATES_DIR:-$WORK_DIR/..}
-ES_URL=${ES_URL:-http://localhost:9200}
 ES_SOURCE_URL=${ES_SOURCE_URL:-$ES_URL}
 CERT_OPTIONS=${CERT_OPTIONS:-}
+CURL_CERT_OPTIONS=${CURL_CERT_OPTIONS:-}
 
 ES_BIN=${ES_BIN:-elasticsearch}
 

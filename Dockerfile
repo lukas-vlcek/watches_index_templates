@@ -8,6 +8,7 @@ ENV HOME=/opt/app-root/src \
   RUBY_VERSION=2.0 \
   GEM_HOME=/opt/app-root/src \
   FLUENTD_VERSION=0.12.31
+  FLUENTD_SECURED="-secured"
 
 LABEL io.k8s.description="Watches TBD" \
   io.k8s.display-name="Watches hackisch sidecar" \
@@ -33,7 +34,7 @@ RUN mkdir -p ${HOME} && \
       'elasticsearch:<5' \
       'fluent-plugin-elasticsearch:>1.9.2'
 
-ADD fluentd/ ${HOME}/fluentd
+ADD fluentd${FLUENTD_SECURED}/ ${HOME}/fluentd${FLUENTD_SECURED}
 ADD kibana/ ${HOME}/kibana
 ADD scripts/ ${HOME}/scripts
 ADD *.json ${ES_CONF}/
