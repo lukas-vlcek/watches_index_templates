@@ -11,4 +11,5 @@ watches nodes_stats \
   -sblt \
   --transform=nested \
   --url=${ES_SOURCE_URL} \
+  ${CERT_OPTIONS} \
 > ${PATH_WATCHES_NODES_STATS_LOGS}

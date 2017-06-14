@@ -10,4 +10,5 @@ watches just_nodes_stats \
   -d $TTL -i 3 \
   -sblt \
   --url=${ES_SOURCE_URL} \
+  ${CERT_OPTIONS} \
 > ${PATH_WATCHES_JUST_NODES_STATS_LOGS}

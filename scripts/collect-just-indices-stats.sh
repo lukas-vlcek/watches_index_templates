@@ -11,4 +11,5 @@ watches just_indices_stats \
   -sblt \
   --level=indices \
   --url=${ES_SOURCE_URL} \
+  ${CERT_OPTIONS} \
 > ${PATH_WATCHES_JUST_INDICES_STATS_LOGS}

@@ -12,4 +12,5 @@ watches cluster_health \
   --level=indices \
   --transform=nested \
   --url=${ES_SOURCE_URL} \
+  ${CERT_OPTIONS} \
 > ${PATH_WATCHES_CLUSTER_HEALTH_LOGS}

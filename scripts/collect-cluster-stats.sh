@@ -11,4 +11,5 @@ watches cluster_stats \
   -sbl \
   --transform=nested \
   --url=${ES_SOURCE_URL} \
+  ${CERT_OPTIONS} \
 > ${PATH_WATCHES_CLUSTER_STATS_LOGS}
