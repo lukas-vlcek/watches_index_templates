@@ -33,8 +33,7 @@ RUN mkdir -p ${HOME} && \
       'elasticsearch-api:<5' \
       'elasticsearch:<5' \
       'fluent-plugin-elasticsearch:>1.9.2'
-RUN yum install pip && \
-    pip install watches
+RUN pip install watches
 
 ADD fluentd/ /etc/fluent/configs.d/
 ADD kibana/ ${HOME}/kibana
