@@ -23,7 +23,7 @@ do
   touch ${f} & echo "Log file ${f} is ready"
 done
 
-fluentd -c ../fluentd/fluentd.conf 2>&1 > ./fluentd.log &
+fluentd -c ../fluentd${FLUENTD_SECURED}/fluentd${FLUENTD_SECURED}.conf 2>&1 > ./fluentd.log &
 pid=$!
 echo ${pid} > ./fluentd.pid
 
