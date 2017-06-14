@@ -2,4 +2,4 @@
 
 cd ./scripts/
 
-./start_fluend.sh
+./start_fluentd.sh
