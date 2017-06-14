@@ -23,8 +23,7 @@ RUN rpmkeys --import file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
       make \
       bc \
       iproute \
-      python3 \
-      python3-setuptools && \
+      python3 && \
     yum clean all
 RUN mkdir -p ${HOME} && \
     gem install -N --conservative --minimal-deps \
@@ -33,14 +32,14 @@ RUN mkdir -p ${HOME} && \
       'elasticsearch-api:<5' \
       'elasticsearch:<5' \
       'fluent-plugin-elasticsearch:>1.9.2'
-RUN pip install watches
 
 ADD fluentd/ /etc/fluent/configs.d/
 ADD kibana/ ${HOME}/kibana
 ADD scripts/ ${HOME}/scripts
 ADD *.json ${ES_CONF}/
 
-ADD run.sh ${HOME}/
+ADD run.sh install.sh ${HOME}/
+RUN ${HOME}/install.sh
 
 WORKDIR ${HOME}
 USER 1000
