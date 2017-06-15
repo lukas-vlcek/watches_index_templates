@@ -18,6 +18,6 @@ do
   sed 's/\"_index\":\".kibana\"/\"_index\":\"${index}\"/g' ${metadata_path}/.kibana_bulk_data_without_config > ${metadata_path}/.kibana_bulk_data_without_config_specific
 #  echo "****************"
 #  cat "${metadata_path}/.kibana_bulk_data_without_config_specific"
-  curl -v -s -X POST ${ES_URL}/_bulk?pretty --data-binary "@${metadata_path}/.kibana_bulk_data_without_config_specific"
+  curl -v -s -X POST ${CURL_CERT_OPTIONS} ${ES_URL}/_bulk?pretty --data-binary "@${metadata_path}/.kibana_bulk_data_without_config_specific"
   rm ${metadata_path}/.kibana_bulk_data_without_config_specific
 done
