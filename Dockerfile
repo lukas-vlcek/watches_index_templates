@@ -41,7 +41,7 @@ ADD fluentd/ ${HOME}/fluentd
 ADD fluentd-secured/ ${HOME}/fluentd-secured
 ADD kibana/ ${HOME}/kibana
 ADD scripts/ ${HOME}/scripts
-ADD *.json ${ES_CONF}/
+ADD *.json ${HOME}/
 
 ADD run.sh install.sh ${HOME}/
 RUN ${HOME}/install.sh
