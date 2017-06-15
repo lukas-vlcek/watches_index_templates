@@ -15,6 +15,8 @@ do
   echo Insert dashboards into ${index} index
   data=`cat ${metadata_path}/.kibana_bulk_data_without_config`
   echo ${data//\"_index\":\".kibana\"/\"_index\":\"${index}\"} > ${metadata_path}/.kibana_bulk_data_without_config_specific
-  curl -v -s -X POST ${ES_URL}/_bulk?pretty --data-binary @${metadata_path}/.kibana_bulk_data_without_config_specific
+  echo "****************"
+  cat "@${metadata_path}/.kibana_bulk_data_without_config_specific"
+  curl -v -s -X POST ${ES_URL}/_bulk?pretty --data-binary "@${metadata_path}/.kibana_bulk_data_without_config_specific"
   rm ${metadata_path}/.kibana_bulk_data_without_config_specific
 done
