@@ -65,6 +65,7 @@ wait_for_port_open() {
         -o $ES_LOG_FILE -w '%{response_code}' \
         $ES_URL) || test $response_code != "200"
     do
+        echo "."
         sleep $RETRY_INTERVAL
         (( retry -= 1 )) || :
         if (( retry == 0 )) ; then
