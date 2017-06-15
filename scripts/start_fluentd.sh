@@ -23,8 +23,8 @@ do
   touch ${f} & echo "Log file ${f} is ready"
 done
 
-fluentd -c ../${FLUENTD_CONFIG}/fluentd.conf 2>&1 > ./fluentd.log &
+fluentd -c ../${FLUENTD_CONFIG}/fluentd.conf 2>&1 > ${PATH_WATCHES_LOGS}/fluentd.log &
 pid=$!
-echo ${pid} > ./fluentd.pid
+echo ${pid} > ${PATH_WATCHES_LOGS}/fluentd.pid
 
 echo "Fluentd starting with PID: ${pid}, output forwarded to fluentd.log file"
