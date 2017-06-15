@@ -14,6 +14,7 @@ INDEX_TEMPLATES_DIR=${INDEX_TEMPLATES_DIR:-$WORK_DIR/..}
 ES_SOURCE_URL=${ES_SOURCE_URL:-$ES_URL}
 CERT_OPTIONS=${CERT_OPTIONS:-}
 CURL_CERT_OPTIONS=${CURL_CERT_OPTIONS:-}
+ES_LOG_FILE=${ES_LOG_FILE:-${WORK_DIR}/es.log}
 
 ES_BIN=${ES_BIN:-elasticsearch}
 
@@ -46,4 +47,34 @@ urlencode() {
     echo $out
 }
 
+# Wait for Elasticsearch port to be opened. Fail on timeout or if response from Elasticsearch is unexpected.
+wait_for_port_open() {
+    timeouted=false
+    rm -f $ES_LOG_FILE
+    # test for ES to be up first and that our SG index has been created
+    echo "Checking if Elasticsearch is ready on $ES_URL"
+    while ! response_code=$(curl -s -X HEAD \
+        ${CURL_CERT_OPTIONS} \
+        --max-time $max_time \
+        -o $ES_LOG_FILE -w '%{response_code}' \
+        $ES_URL) || test $response_code != "200"
+    do
+        sleep $RETRY_INTERVAL
+        (( retry -= 1 )) || :
+        if (( retry == 0 )) ; then
+            timeouted=true
+            break
+        fi
+    done
 
+    if [ $timeouted = true ] ; then
+        echo "Timed out waiting for Elasticsearch to be ready"
+    else
+        rm -f $ES_LOG_FILE
+        echo Elasticsearch is ready and listening at $ES_URL
+        return 0
+    fi
+    cat $ES_LOG_FILE
+    rm -f $ES_LOG_FILE
+    exit 1
+}
