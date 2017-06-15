@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+#set -euxo pipefail
+
 source _configure_env.sh
 
 ppids=""
@@ -14,7 +16,7 @@ function kill_pids {
 trap kill_pids SIGHUP SIGQUIT SIGINT SIGTERM
 
 function start_script {
-  echo starting $1
+  echo starting ${1:-}
   nohup ./$1 $TTL > ${PATH_WATCHES_LOGS}/watches-$1.log 2> /dev/null &
   sleep 0.2
   childs=`pgrep -P $!`
