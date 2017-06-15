@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ $1 == "-v" ]]; then
+if [[ "${1:-}" == "-v" ]]; then
   set -x
 fi
 
