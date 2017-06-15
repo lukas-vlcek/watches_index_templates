@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euxo pipefail
+
 cd ./scripts/
 
 source ./_configure_env.sh
