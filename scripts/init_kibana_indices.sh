@@ -10,7 +10,7 @@ indices=$(curl -s -X GET ${CURL_CERT_OPTIONS} ${ES_URL}/_cat/indices/.kibana*?h=
 metadata_path=../kibana/dashboards
 
 echo ${indices}
-for index in "${indices[@]}"
+for index in ${indices}
 do
   echo ${index}
   data=`cat ${metadata_path}/.kibana_bulk_data_without_config`
