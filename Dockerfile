@@ -4,6 +4,9 @@ MAINTAINER The ViaQ Community <community@TBA>
 USER 0
 
 ENV HOME=/opt/app-root/src \
+  ES_HOST=localhost \
+  ES_PORT=9200 \
+  ES_PROTOCOL=https \
   PATH=/opt/app-root/src/bin:/opt/app-root/bin:$PATH \
   RUBY_VERSION=2.0 \
   GEM_HOME=/opt/app-root/src \
