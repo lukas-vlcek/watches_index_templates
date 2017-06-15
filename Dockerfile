@@ -11,7 +11,7 @@ ENV HOME=/opt/app-root/src \
   RUBY_VERSION=2.0 \
   GEM_HOME=/opt/app-root/src \
   FLUENTD_VERSION=0.12.31 \
-  FLUENTD_SECURED="-secured"
+  FLUENTD_CONFIG="fluentd"
 
 LABEL io.k8s.description="Watches TBD" \
   io.k8s.display-name="Watches hackisch sidecar" \
