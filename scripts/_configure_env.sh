@@ -14,7 +14,14 @@ INDEX_TEMPLATES_DIR=${INDEX_TEMPLATES_DIR:-$WORK_DIR/..}
 ES_SOURCE_URL=${ES_SOURCE_URL:-$ES_URL}
 CERT_OPTIONS=${CERT_OPTIONS:-}
 CURL_CERT_OPTIONS=${CURL_CERT_OPTIONS:-}
-ES_LOG_FILE=${ES_LOG_FILE:-${WORK_DIR}/es.log}
+
+ES_LOG_FILE=${ES_LOG_FILE:-${WORK_DIR}/elasticsearch_connect_log.txt}
+RETRY_COUNT=${RETRY_COUNT:-300}
+RETRY_INTERVAL=${RETRY_INTERVAL:-1}
+
+retry=${RETRY_COUNT}
+max_time=$(( RETRY_COUNT * RETRY_INTERVAL ))
+timeouted=false
 
 ES_BIN=${ES_BIN:-elasticsearch}
 
@@ -49,7 +56,6 @@ urlencode() {
 
 # Wait for Elasticsearch port to be opened. Fail on timeout or if response from Elasticsearch is unexpected.
 wait_for_port_open() {
-    timeouted=false
     rm -f $ES_LOG_FILE
     # test for ES to be up first and that our SG index has been created
     echo "Checking if Elasticsearch is ready on $ES_URL"
