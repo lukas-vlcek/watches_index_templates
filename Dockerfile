@@ -20,6 +20,7 @@ LABEL io.k8s.description="Watches TBD" \
 
 RUN rpmkeys --import file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
     yum install -y --setopt=tsflags=nodocs \
+      logrotate \
       gcc-c++ \
       ruby \
       ruby-devel \
